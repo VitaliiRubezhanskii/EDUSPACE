@@ -1,0 +1,2 @@
+INSERT INTO eduspace.person (person_type,person_id, first_name, name_by_father, last_name, start_of_career, professional_interest) VALUES ('teacher',3, 'Alex', 'Leo', 'Melnik', '2018-06-12', 'Mathematics');
+INSERT INTO eduspace.person (person_type,person_id, first_name, name_by_father, last_name, start_of_career, professional_interest) VALUES ('teacher',4, 'Lyuda', 'Niko', 'Keleberda', '2018-06-05', 'Philology');
