@@ -8,20 +8,19 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "parent")
 @Data
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
-public class Parent {
+public class Parent implements Serializable {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "person_id")
+    @Column(name = "parent_id")
     private int personId;
 
     @Column(name = "first_name")
@@ -43,7 +42,7 @@ public class Parent {
     @Email
     private  String email;
 
-
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "parents")
     private Set<Student> students;
 

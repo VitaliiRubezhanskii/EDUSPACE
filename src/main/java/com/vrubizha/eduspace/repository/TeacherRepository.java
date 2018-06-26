@@ -8,4 +8,6 @@ import javax.transaction.Transactional;
 
 @Repository
 public interface TeacherRepository extends JpaRepository<Teacher,Integer> {
+
+    Teacher findTeacherByPersonId(int personId);
 }

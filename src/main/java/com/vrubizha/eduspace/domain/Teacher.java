@@ -2,26 +2,25 @@ package com.vrubizha.eduspace.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
 @Entity
 @Table(name = "teacher")
 @Data
-@AllArgsConstructor
-@ToString
-@EqualsAndHashCode
-public class Teacher {
+public class Teacher implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "person_id")
+    @Column(name = "teacher_id")
     private int personId;
 
     @Column(name = "first_name")
@@ -48,14 +47,15 @@ public class Teacher {
     @Column(name = "professional_interest")
     private String professionalInterest;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "teachers")
     private Set<Student>students;
 
     public Teacher() {
     }
 
-    public Teacher(int personId, @Size(min = 1, max = 20) @NotNull String firstName, @Size(min = 1, max = 20) @NotNull String nameByFather,
-                   @Size(min = 1, max = 20) @NotNull String lastName, @Email String email, Date startOfCareer, String professionalInterest) {
+    public Teacher(int personId,@Size(min = 1, max = 20) @NotNull String firstName, @Size(min = 1, max = 20) @NotNull String nameByFather, @Size(min = 1, max = 20) @NotNull String lastName, @Email String email,
+                   Date startOfCareer, String professionalInterest, Set<Student> students) {
         this.personId=personId;
         this.firstName = firstName;
         this.nameByFather = nameByFather;
@@ -63,5 +63,7 @@ public class Teacher {
         this.email = email;
         this.startOfCareer = startOfCareer;
         this.professionalInterest = professionalInterest;
+        this.students = students;
     }
 }
+

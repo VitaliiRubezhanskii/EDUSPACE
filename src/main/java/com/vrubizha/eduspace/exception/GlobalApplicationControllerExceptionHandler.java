@@ -12,10 +12,15 @@ import java.util.Optional;
 
 @ControllerAdvice
 @RequestMapping(produces = "application/vnd.error+json")
-public class StudentControllerExceptionHandler {
+public class GlobalApplicationControllerExceptionHandler {
 
     @ExceptionHandler(StudentNotFoundException.class)
     public ResponseEntity<VndErrors> handleStudentNotFoundException(final StudentNotFoundException exception){
+        return error(exception,HttpStatus.NOT_FOUND,exception.getMessage());
+    }
+
+    @ExceptionHandler(TeacherNotFoundException.class)
+    public ResponseEntity<VndErrors> handleTeacherNotFoundException(final TeacherNotFoundException exception){
         return error(exception,HttpStatus.NOT_FOUND,exception.getMessage());
     }
 
