@@ -1,0 +1,53 @@
+{
+
+  "personId":1,
+  "firstName":"Vitalii",
+  "nameByFather":"Sergeevich",
+  "lastName":"Rubezhanskii",
+  "email":"vitalii.rubezhanskii@gmail.com",
+  "grade":11,
+  "studyingInterest":"Mathematics",
+
+  "parents":[
+
+    {
+      "personId":1,
+      "firstName":"Sergey",
+      "nameByFather":"Ivanovich",
+      "lastName":"Rubezhanskii",
+      "email":"sergey.rubezhanskii@gmail.com"
+
+
+
+    },
+    {
+      "personId":2,
+      "firstName":"Larisa",
+      "nameByFather":"Alexeevna",
+      "lastName":"Rubezhanskaya",
+      "email":"larisa.rubezhanskaya@gmail.com"
+    }
+
+  ],
+
+  "teachers":[
+
+    {
+      "personId":1,
+      "firstName":"Nina",
+      "nameByFather":"Volodymyrivna",
+      "lastName":"Rubezhanskaya",
+      "email":"nina.rubezhanskaya@gmail.com"
+
+    },
+    {
+      "personId":2,
+      "firstName":"Alexander",
+      "nameByFather":"Leonidovych",
+      "lastName":"Melnikov",
+      "email":"alex.melnikov@gmail.com"
+
+    }
+  ]
+
+}
