@@ -1,6 +1,7 @@
 package com.vrubizha.eduspace.service.serviceImpl;
 
 import com.vrubizha.eduspace.domain.Student;
+import com.vrubizha.eduspace.exception.StudentNotFoundException;
 import com.vrubizha.eduspace.repository.StudentRepository;
 import com.vrubizha.eduspace.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class StudentServiceImpl implements StudentService {
         Student student=null;
         if (studentOptional.isPresent()){
             student=studentOptional.get();
-        }
+        } else throw new StudentNotFoundException("There are no student with "+id+" in the database");
         return student;
     }
 
