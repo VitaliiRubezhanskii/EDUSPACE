@@ -1,5 +1,7 @@
 package com.vrubizha.eduspace.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -44,6 +46,7 @@ public class Subject {
         this.subjectName = subjectName;
     }
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "subjects")
     public Set<Teacher> getTeachers() {
         return teachers;

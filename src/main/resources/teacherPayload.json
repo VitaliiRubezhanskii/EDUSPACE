@@ -1,0 +1,19 @@
+{
+    "personId": 10,
+    "firstName": "Raisa",
+    "nameByFather": "Vasylivna",
+    "lastName": "Shkavro",
+    "email": "raisa.shkavro@gmail.com",
+    "startOfCareer": null,
+    "professionalInterest": null,
+    "subjects": [
+        {
+            "subjectId": 11,
+            "subjectName": "Chemistry"
+        },
+        {
+            "subjectId": 10,
+            "subjectName": "Biology"
+        }
+    ]
+}

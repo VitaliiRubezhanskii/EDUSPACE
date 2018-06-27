@@ -38,4 +38,9 @@ public class StudentController {
         logger.info("teachers "+studentService.findStudentById(id).getTeachers());
         return studentService.findStudentById(id);
     }
+
+    @DeleteMapping("/students/{id}")
+    public Student deleteStudent(@RequestBody Student student){
+        return studentService.delete(student);
+    }
 }

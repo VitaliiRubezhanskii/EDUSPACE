@@ -6,10 +6,7 @@ import com.vrubizha.eduspace.service.TeacherService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/eduspace")
@@ -25,8 +22,19 @@ public class TeacherController {
 
     @GetMapping("/teachers/{id}")
     public Teacher findTeacherById(@PathVariable("id") int id){
-    logger.info("students of this teacher: "+teacherService.findTeacherById(id));
+    logger.info("retrieving teacher with id= "+id);
     return teacherService.findTeacherById(id);
+    }
 
+    @PostMapping("/teachers")
+    public Teacher createTeacher(@RequestBody Teacher teacher){
+        Teacher createdTeacher=teacherService.createTeacher(teacher);
+        logger.info("creating new teacher with id= "+createdTeacher.getPersonId());
+    return  createdTeacher;
+    }
+
+    @DeleteMapping("/teachers/{id}")
+    public Teacher deleteTeacher(@RequestBody Teacher teacher){
+    return teacherService.deleteTeacher(teacher);
     }
 }

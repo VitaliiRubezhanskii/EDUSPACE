@@ -17,8 +17,13 @@ public class TeacherServiceImpl implements TeacherService {
 
     private static final Logger logger=LoggerFactory.getLogger(TeacherServiceImpl.class);
 
-    @Autowired
+
     private TeacherRepository teacherRepository;
+
+    @Autowired
+    public TeacherServiceImpl(TeacherRepository teacherRepository) {
+        this.teacherRepository = teacherRepository;
+    }
 
     @Override
     public Teacher findTeacherById(int id) {
@@ -30,7 +35,19 @@ public class TeacherServiceImpl implements TeacherService {
 
     }
 
-//    @Override
+    @Override
+    public Teacher createTeacher(Teacher teacher) {
+        return teacherRepository.save(teacher);
+    }
+
+    @Override
+    public Teacher deleteTeacher(Teacher teacher) {
+        teacherRepository.delete(teacher);
+        return teacher;
+    }
+
+
+    //    @Override
 //    public Teacher findTeacherByStudents() {
 //        return teacherRepository.findTeacherByStudents();
 //    }

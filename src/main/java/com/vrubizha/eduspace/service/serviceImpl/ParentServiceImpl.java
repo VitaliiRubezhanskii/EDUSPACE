@@ -9,8 +9,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class ParentServiceImpl implements ParentService {
 
-    @Autowired
+
     private ParentRepository parentRepository;
+
+    @Autowired
+    public ParentServiceImpl(ParentRepository parentRepository) {
+        this.parentRepository = parentRepository;
+    }
 
     @Override
     public Parent save(Parent parent) {
