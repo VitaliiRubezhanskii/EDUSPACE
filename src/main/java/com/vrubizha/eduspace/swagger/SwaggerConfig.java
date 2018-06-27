@@ -25,7 +25,6 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                 .apis(RequestHandlerSelectors.basePackage("com.vrubizha.eduspace"))
                 .paths(any())
                 .build();
-
     }
 
     private ApiInfo metaData() {
@@ -40,7 +39,6 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                         "vitalii.rubezhanskii@gmail.com"))
                 .build();
     }
-
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("swagger-ui.html")

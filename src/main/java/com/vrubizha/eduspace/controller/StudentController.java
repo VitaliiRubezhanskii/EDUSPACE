@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -26,21 +28,27 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @PostMapping(value = "/students",produces = "application/json",
+    @PostMapping(value = "/students",
+            produces = "application/json",
             consumes = "application/json")
-    public Student createStudent(@RequestBody Student student){ //
-        return studentService.save(student);
+    public ResponseEntity< Student > createStudent(@RequestBody Student student){
+        Student createdStudent=studentService.save(student);
+        logger.info("created new student with id= "+createdStudent.getPersonId());
+        return new ResponseEntity<>(createdStudent,HttpStatus.OK);
     }
 
-
     @GetMapping("/students/{id}")
-    public Student getStudentById(@PathVariable("id") int id){
-        logger.info("teachers "+studentService.findStudentById(id).getTeachers());
-        return studentService.findStudentById(id);
+    public ResponseEntity< Student > getStudentById(@PathVariable("id") int id){
+        logger.info("retrieving student with id= "+id);
+        Student foundStudent=studentService.findStudentById(id);
+        if (foundStudent==null)
+            return new ResponseEntity<>(foundStudent,HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(foundStudent,HttpStatus.OK);
     }
 
     @DeleteMapping("/students/{id}")
-    public Student deleteStudent(@RequestBody Student student){
-        return studentService.delete(student);
+    public ResponseEntity< Student > deleteStudent(@RequestBody Student student){
+        logger.info("deleting student with id= "+student.getPersonId());
+        return new ResponseEntity<>(studentService.delete(student),HttpStatus.OK);
     }
 }

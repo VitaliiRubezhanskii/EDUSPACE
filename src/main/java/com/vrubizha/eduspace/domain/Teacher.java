@@ -2,8 +2,6 @@ package com.vrubizha.eduspace.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jdk.nashorn.internal.ir.annotations.Ignore;
-import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

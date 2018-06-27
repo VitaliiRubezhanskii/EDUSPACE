@@ -6,6 +6,8 @@ import com.vrubizha.eduspace.service.TeacherService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,20 +23,21 @@ public class TeacherController {
     }
 
     @GetMapping("/teachers/{id}")
-    public Teacher findTeacherById(@PathVariable("id") int id){
-    logger.info("retrieving teacher with id= "+id);
-    return teacherService.findTeacherById(id);
+    public ResponseEntity< Teacher > findTeacherById(@PathVariable("id") int id){
+         logger.info("retrieving teacher with id= "+id);
+         return new ResponseEntity<>(teacherService.findTeacherById(id),HttpStatus.OK);
     }
 
     @PostMapping("/teachers")
-    public Teacher createTeacher(@RequestBody Teacher teacher){
+    public ResponseEntity< Teacher > createTeacher(@RequestBody Teacher teacher){
         Teacher createdTeacher=teacherService.createTeacher(teacher);
         logger.info("creating new teacher with id= "+createdTeacher.getPersonId());
-    return  createdTeacher;
+    return  new ResponseEntity<>(createdTeacher,HttpStatus.OK);
     }
 
     @DeleteMapping("/teachers/{id}")
-    public Teacher deleteTeacher(@RequestBody Teacher teacher){
-    return teacherService.deleteTeacher(teacher);
+    public ResponseEntity< Teacher > deleteTeacher(@RequestBody Teacher teacher){
+        logger.info("deleting teacher with id= "+teacher.getPersonId());
+    return new ResponseEntity<>(teacherService.deleteTeacher(teacher),HttpStatus.OK);
     }
 }
