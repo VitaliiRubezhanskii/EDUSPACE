@@ -1,0 +1,15 @@
+INSERT INTO eduspace.teacher_subject (teacher_id, subject_id) VALUES (4, 1);
+INSERT INTO eduspace.teacher_subject (teacher_id, subject_id) VALUES (4, 2);
+INSERT INTO eduspace.teacher_subject (teacher_id, subject_id) VALUES (5, 3);
+INSERT INTO eduspace.teacher_subject (teacher_id, subject_id) VALUES (6, 4);
+INSERT INTO eduspace.teacher_subject (teacher_id, subject_id) VALUES (6, 5);
+INSERT INTO eduspace.teacher_subject (teacher_id, subject_id) VALUES (7, 12);
+INSERT INTO eduspace.teacher_subject (teacher_id, subject_id) VALUES (8, 6);
+INSERT INTO eduspace.teacher_subject (teacher_id, subject_id) VALUES (9, 7);
+INSERT INTO eduspace.teacher_subject (teacher_id, subject_id) VALUES (9, 8);
+INSERT INTO eduspace.teacher_subject (teacher_id, subject_id) VALUES (9, 9);
+INSERT INTO eduspace.teacher_subject (teacher_id, subject_id) VALUES (10, 10);
+INSERT INTO eduspace.teacher_subject (teacher_id, subject_id) VALUES (10, 11);
+INSERT INTO eduspace.teacher_subject (teacher_id, subject_id) VALUES (11, 13);
+INSERT INTO eduspace.teacher_subject (teacher_id, subject_id) VALUES (12, 14);
+INSERT INTO eduspace.teacher_subject (teacher_id, subject_id) VALUES (13, 15);

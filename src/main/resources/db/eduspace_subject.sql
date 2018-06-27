@@ -1,0 +1,15 @@
+INSERT INTO eduspace.subject (subject_id, subject_name) VALUES (1, 'Algebra');
+INSERT INTO eduspace.subject (subject_id, subject_name) VALUES (2, 'Geometry');
+INSERT INTO eduspace.subject (subject_id, subject_name) VALUES (3, 'Physics');
+INSERT INTO eduspace.subject (subject_id, subject_name) VALUES (4, 'Ukrainian Language');
+INSERT INTO eduspace.subject (subject_id, subject_name) VALUES (5, 'Ukrainian Literature');
+INSERT INTO eduspace.subject (subject_id, subject_name) VALUES (6, 'Foreign Literature');
+INSERT INTO eduspace.subject (subject_id, subject_name) VALUES (7, 'Basics of Law');
+INSERT INTO eduspace.subject (subject_id, subject_name) VALUES (8, 'History of Ukraine');
+INSERT INTO eduspace.subject (subject_id, subject_name) VALUES (9, 'History of the world');
+INSERT INTO eduspace.subject (subject_id, subject_name) VALUES (10, 'Biology');
+INSERT INTO eduspace.subject (subject_id, subject_name) VALUES (11, 'Chemistry');
+INSERT INTO eduspace.subject (subject_id, subject_name) VALUES (12, 'English Language');
+INSERT INTO eduspace.subject (subject_id, subject_name) VALUES (13, 'Geography');
+INSERT INTO eduspace.subject (subject_id, subject_name) VALUES (14, 'Informatics');
+INSERT INTO eduspace.subject (subject_id, subject_name) VALUES (15, 'Sport');

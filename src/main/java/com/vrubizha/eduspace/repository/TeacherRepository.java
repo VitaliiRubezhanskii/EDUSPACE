@@ -10,4 +10,5 @@ import javax.transaction.Transactional;
 public interface TeacherRepository extends JpaRepository<Teacher,Integer> {
 
     Teacher findTeacherByPersonId(int personId);
+//    Teacher findTeacherByStudents();
 }
