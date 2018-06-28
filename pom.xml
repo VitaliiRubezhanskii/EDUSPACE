@@ -121,7 +121,6 @@
             <artifactId>nekohtml</artifactId>
             <version>1.9.21</version>
         </dependency>
-        <!-- webjar bootstrap and jquery dependencies -->
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
@@ -137,6 +136,17 @@
             <artifactId>webjars-locator</artifactId>
             <version>0.30</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.3.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-hibernate4</artifactId>
+            <version>2.9.6</version>
+        </dependency>
+
     </dependencies>
 
     <build>

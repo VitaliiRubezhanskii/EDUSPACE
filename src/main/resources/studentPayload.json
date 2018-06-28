@@ -48,6 +48,16 @@
       "email":"alex.melnikov@gmail.com"
 
     }
-  ]
+  ],
+  "address": {
+
+    "addressId":1,
+    "city":"Kharkov",
+    "country":"Ukraine",
+    "district":"Moskowsky",
+    "region":"Kharkovskaya",
+    "street":"Hvardeytsev Shyronintsev, 67, 90 room",
+    "zipCode":"61000"
+  }
 
 }

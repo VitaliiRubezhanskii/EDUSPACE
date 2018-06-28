@@ -1,6 +1,8 @@
 package com.vrubizha.eduspace.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
@@ -33,14 +35,15 @@ public class Student implements Serializable {
     @Max(12)
     private int grade;
     private String studyingInterest;
+    private Address address;
     private Set<Parent> parents;
     private Set<Teacher>teachers;
 
     public Student() {
     }
 
-    public Student(int personId, @Size(min = 1, max = 20) @NotNull String firstName, @Size(min = 1, max = 20) @NotNull String nameByFather, @Size(min = 1, max = 20) @NotNull String lastName,
-                   @Email String email, @NotNull @Max(12) int grade, String studyingInterest, Set<Parent> parents, Set<Teacher> teachers) {
+    public Student(int personId, @Size(min = 1, max = 20) @NotNull String firstName, @Size(min = 1, max = 20) @NotNull String nameByFather, @Size(min = 1, max = 20) @NotNull String lastName, @Email String email,
+                   @NotNull @Max(12) int grade, String studyingInterest, Address address, Set<Parent> parents, Set<Teacher> teachers) {
         this.personId = personId;
         this.firstName = firstName;
         this.nameByFather = nameByFather;
@@ -48,6 +51,7 @@ public class Student implements Serializable {
         this.email = email;
         this.grade = grade;
         this.studyingInterest = studyingInterest;
+        this.address = address;
         this.parents = parents;
         this.teachers = teachers;
     }
@@ -133,5 +137,14 @@ public class Student implements Serializable {
     }
     public void setTeachers(Set<Teacher> teachers) {
         this.teachers = teachers;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    public Address getAddress() {
+        return address;
+    }
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
