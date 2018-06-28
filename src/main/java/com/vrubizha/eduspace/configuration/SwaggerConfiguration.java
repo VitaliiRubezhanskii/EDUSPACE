@@ -1,4 +1,4 @@
-package com.vrubizha.eduspace.swagger;
+package com.vrubizha.eduspace.configuration;
 
 
 import org.springframework.context.annotation.Bean;
@@ -16,7 +16,7 @@ import static springfox.documentation.builders.PathSelectors.any;
 
 @Configuration
 @EnableSwagger2
-public class SwaggerConfig extends WebMvcConfigurationSupport {
+public class SwaggerConfiguration extends WebMvcConfigurationSupport {
 
     @Bean
     public Docket productApi() {
