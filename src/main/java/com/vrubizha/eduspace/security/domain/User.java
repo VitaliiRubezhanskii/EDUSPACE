@@ -9,18 +9,28 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(name = "EDUSPACE_USER")
+@Table(name = "user")
 public class User implements Serializable {
 
 
-    private int id;
-    private String email;
-    private String password;
-    private String name;
-    private String lastName;
-    private int active;
-    private Set<Role> roles;
 
+    private int id;
+
+    private String email;
+
+    @Column(name = "password")
+    @Length(min = 5, message = "*Your password must have at least 5 characters")
+    @NotEmpty(message = "*Please provide your password")
+    @Transient
+    private String password;
+
+    private String name;
+
+    private String lastName;
+
+    private int active;
+
+    private Set<Role> roles;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,9 +42,6 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    @Column(name = "email")
-    @Email(message = "*Please provide a valid Email")
-    @NotEmpty(message = "*Please provide an email")
     public String getPassword() {
         return password;
     }
@@ -42,10 +49,8 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    @Column(name = "password")
-    @Length(min = 5, message = "*Your password must have at least 5 characters")
-    @NotEmpty(message = "*Please provide your password")
-    @Transient
+    @Column(name = "name")
+    @NotEmpty(message = "*Please provide your name")
     public String getName() {
         return name;
     }
@@ -53,9 +58,8 @@ public class User implements Serializable {
         this.name = name;
     }
 
-
-    @Column(name = "name")
-    @NotEmpty(message = "*Please provide your name")
+    @Column(name = "last_name")
+    @NotEmpty(message = "*Please provide your last name")
     public String getLastName() {
         return lastName;
     }
@@ -63,9 +67,9 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
 
-
-    @Column(name = "last_name")
-    @NotEmpty(message = "*Please provide your last name")
+    @Column(name = "email")
+    @Email(message = "*Please provide a valid Email")
+    @NotEmpty(message = "*Please provide an email")
     public String getEmail() {
         return email;
     }
@@ -80,6 +84,7 @@ public class User implements Serializable {
     public void setActive(int active) {
         this.active = active;
     }
+
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))

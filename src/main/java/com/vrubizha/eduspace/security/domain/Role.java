@@ -4,11 +4,13 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "EDUSPASE_ROLE")
+@Table(name = "role")
 public class Role implements Serializable {
+
 
     private int id;
     private String role;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
