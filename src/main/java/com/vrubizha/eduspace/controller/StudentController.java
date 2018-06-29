@@ -1,6 +1,7 @@
 package com.vrubizha.eduspace.controller;
 
 
+import com.vrubizha.eduspace.domain.Address;
 import com.vrubizha.eduspace.domain.Parent;
 import com.vrubizha.eduspace.domain.Student;
 import com.vrubizha.eduspace.domain.Teacher;
@@ -34,6 +35,13 @@ public class StudentController {
             produces = "application/json",
             consumes = "application/json")
     public ResponseEntity< Student > createStudent(@RequestBody Student student){
+        Address address=new Address();
+        address.setAddressId(1);
+        address.setCountry("Ukraine");
+        address.setCity("Kharkiv");
+        address.setDistrict("Moscowsky");
+        address.setStreet("Shyronintswv");
+        student.setAddress(address);
         Student createdStudent=studentService.save(student);
         logger.info("created new student with id= "+createdStudent.getPersonId());
         return new ResponseEntity<>(createdStudent,HttpStatus.OK);

@@ -3,12 +3,14 @@ package com.vrubizha.eduspace.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -77,7 +79,7 @@ public class Parent implements Serializable {
     }
 
     @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "parents")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REFRESH,CascadeType.DETACH}, mappedBy = "parents")
     public Set<Student> getStudents() {
         return students;
     }
@@ -98,5 +100,24 @@ public class Parent implements Serializable {
         this.lastName = lastName;
         this.email = email;
         this.students = students;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Parent)) return false;
+        Parent parent = (Parent) o;
+        return getPersonId() == parent.getPersonId() &&
+                Objects.equals(getFirstName(), parent.getFirstName()) &&
+                Objects.equals(getNameByFather(), parent.getNameByFather()) &&
+                Objects.equals(getLastName(), parent.getLastName()) &&
+                Objects.equals(getEmail(), parent.getEmail()) &&
+                Objects.equals(getStudents(), parent.getStudents());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getPersonId(), getFirstName(), getNameByFather(), getLastName(), getEmail(), getStudents());
     }
 }

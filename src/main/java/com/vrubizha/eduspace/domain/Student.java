@@ -2,6 +2,8 @@ package com.vrubizha.eduspace.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -9,10 +11,13 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Table(name = "student")
+@Getter
+@Setter
 public class Student implements Serializable {
 
     private int personId;
@@ -139,12 +144,15 @@ public class Student implements Serializable {
         this.teachers = teachers;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
+
+    @ManyToOne (fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id",nullable = false)
     public Address getAddress() {
         return address;
     }
     public void setAddress(Address address) {
         this.address = address;
     }
+
+
 }

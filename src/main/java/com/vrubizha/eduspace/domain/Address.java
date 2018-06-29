@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -94,14 +95,35 @@ public class Address implements Serializable {
     }
 
 
-    @OneToMany( mappedBy = "address",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "address")
+    @Column(nullable = false)
     @JsonIgnore
     public Set<Student> getStudents() {
         return students;
     }
     public void setStudents(Set<Student> students) {
         this.students = students;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Address)) return false;
+        Address address = (Address) o;
+        return getAddressId() == address.getAddressId() &&
+                Objects.equals(getCountry(), address.getCountry()) &&
+                Objects.equals(getRegion(), address.getRegion()) &&
+                Objects.equals(getCity(), address.getCity()) &&
+                Objects.equals(getDistrict(), address.getDistrict()) &&
+                Objects.equals(getStreet(), address.getStreet()) &&
+                Objects.equals(getZipCode(), address.getZipCode()) &&
+                Objects.equals(getStudents(), address.getStudents());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getAddressId(), getCountry(), getRegion(), getCity(), getDistrict(), getStreet(), getZipCode(), getStudents());
     }
 }

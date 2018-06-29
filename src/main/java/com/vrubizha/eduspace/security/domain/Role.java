@@ -11,8 +11,6 @@ public class Role implements Serializable {
 
     private int id;
     private String role;
-   // private Set<User> users;
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,13 +30,5 @@ public class Role implements Serializable {
         this.role = role;
     }
 
-//
-//    @ManyToMany(mappedBy = "roles")
-//    public Set<User> getUsers() {
-//        return users;
-//    }
-//    public void setUsers(Set<User> users) {
-//        this.users = users;
-//    }
 
 }
