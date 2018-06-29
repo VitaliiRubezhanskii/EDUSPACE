@@ -55,7 +55,7 @@
                     <h4 th:class="w3-center" th:text="${user.getName()+' '+user.getLastName()}">My Profile</h4>
                     <p class="w3-center"><img th:src="@{/img/avatar3.png}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
                     <hr>
-                    <p th:text="${user.getName()}"><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
+                    <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><span th:text="${user.getName()}"></span></p>
                     <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
                     <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
                 </div>
