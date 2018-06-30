@@ -41,7 +41,7 @@ public class RabbitConfiguration {
 
     @Bean
     public Queue friendRequestQueue() {
-        return new Queue("FriendRequest");
+        return new Queue("queue1");
     }
 
 

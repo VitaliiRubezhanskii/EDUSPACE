@@ -15,8 +15,8 @@ public class RabbitMqListener {
 
     private final static Logger logger=LoggerFactory.getLogger(RabbitMqListener.class);
 
-    @RabbitListener(queues = "FriendRequest")
-    public void processQueue1(String message) {
-        logger.info("Received from queue 1: " + message);
+    @RabbitListener(queues = "queue1")
+    public void processQueue1(Object message) {
+        logger.info("Received from friendRequest: " + new String(message.toString()));
     }
 }

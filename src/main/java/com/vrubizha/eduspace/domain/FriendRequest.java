@@ -1,12 +1,13 @@
 package com.vrubizha.eduspace.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.Set;
 
 @Entity
 @Table(name = "friend_request")
-public class FriendRequest {
+public class FriendRequest implements Serializable {
 
     private int requestId;
     private int opponentAccount;
