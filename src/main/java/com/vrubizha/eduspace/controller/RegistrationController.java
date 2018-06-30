@@ -1,11 +1,16 @@
 package com.vrubizha.eduspace.controller;
 
+import com.vrubizha.eduspace.domain.Group;
+import com.vrubizha.eduspace.domain.Student;
 import com.vrubizha.eduspace.security.domain.User;
 import com.vrubizha.eduspace.security.service.UserService;
+import com.vrubizha.eduspace.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.Hibernate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -14,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
+import java.util.Set;
 
 @Controller
 @Slf4j
@@ -21,8 +27,15 @@ public class RegistrationController {
 
     private static final Logger logger=LoggerFactory.getLogger(RegistrationController.class);
 
+
+    private final UserService userService;
+    private final StudentService studentService;
+
     @Autowired
-    private UserService userService;
+    public RegistrationController(UserService userService, StudentService studentService) {
+        this.userService = userService;
+        this.studentService = studentService;
+    }
 
     @GetMapping(value={"/", "/login"})
     public ModelAndView login(){
@@ -65,9 +78,14 @@ public class RegistrationController {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
+        Student student=studentService.findStudentByEmail(user.getEmail());
+
+        Set<Group> studentsGroups=student.getGroups();
         logger.info("Initialized [Authentication] "+auth.getName()+" and [User] "+user.getLastName());
+        logger.info("Initialized groups: "+studentsGroups.toString());
         modelAndView.addObject("user",user);
-       // modelAndView.addObject();
+        modelAndView.addObject("student",student);
+        modelAndView.addObject("studentsGroups",studentsGroups);
         modelAndView.setViewName("studentAccount");
         return modelAndView;
     }

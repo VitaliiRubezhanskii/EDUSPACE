@@ -65,9 +65,27 @@
             <!-- Accordion -->
             <div class="w3-card w3-round">
                 <div class="w3-white">
+                    <button onclick="myFunction('Demo0')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-envelope fa-fw w3-margin-right"></i> Contact me</button>
+                    <div id="Demo0" class="w3-hide w3-container">
+                       <div class="w3-card w3-round w3-white">
+
+                           <p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i><span th:text="${student.getEmail()}"></span></p>
+                           <p><i class="fa fa-phone fa-fw w3-margin-right w3-text-theme"></i><span th:text="${student.getPhone()}"></span></p>
+
+
+
+                       </div>
+                    </div>
                     <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
                     <div id="Demo1" class="w3-hide w3-container">
-                        <p>Some text..</p>
+                        <div class="w3-card w3-round w3-white">
+
+                            <p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i><li th:each="studentgroup : ${studentsGroups}" th:text="${studentgroup.getGroupName()}"></li></p>
+
+
+
+
+                        </div>
                     </div>
                     <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
                     <div id="Demo2" class="w3-hide w3-container">

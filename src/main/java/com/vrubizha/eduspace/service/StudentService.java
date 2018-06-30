@@ -10,5 +10,6 @@ public interface StudentService {
     Student delete(Student student);
     Student findStudentById(int id);
     List<Student> findAllStudents();
+    Student findStudentByEmail(String email);
 
 }

@@ -10,5 +10,5 @@ import javax.transaction.Transactional;
 @Repository
 public interface StudentRepository extends JpaRepository<Student,Integer> {
 
-
+    Student findStudentByEmail(String email);
 }

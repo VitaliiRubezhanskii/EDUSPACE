@@ -36,11 +36,11 @@ public class StudentController {
             consumes = "application/json")
     public ResponseEntity< Student > createStudent(@RequestBody Student student){
         Address address=new Address();
-        address.setAddressId(1);
+       // address.setAddressId(1);
         address.setCountry("Ukraine");
         address.setCity("Kharkiv");
         address.setDistrict("Moscowsky");
-        address.setStreet("Shyronintswv");
+        address.setStreet("Heroiv Pratsi");
         student.setAddress(address);
         Student createdStudent=studentService.save(student);
         logger.info("created new student with id= "+createdStudent.getPersonId());

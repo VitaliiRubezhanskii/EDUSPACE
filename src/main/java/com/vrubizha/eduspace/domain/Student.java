@@ -6,10 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
@@ -39,26 +36,36 @@ public class Student implements Serializable {
     @NotNull
     @Max(12)
     private int grade;
+
+    @Pattern(regexp="(^$|[0-9]{10})")
+    private String phone;
+
     private String studyingInterest;
     private Address address;
     private Set<Parent> parents;
     private Set<Teacher>teachers;
+    private Set<Group> groups;
 
     public Student() {
     }
 
-    public Student(int personId, @Size(min = 1, max = 20) @NotNull String firstName, @Size(min = 1, max = 20) @NotNull String nameByFather, @Size(min = 1, max = 20) @NotNull String lastName, @Email String email,
-                   @NotNull @Max(12) int grade, String studyingInterest, Address address, Set<Parent> parents, Set<Teacher> teachers) {
+    public Student(int personId, @Size(min = 1, max = 20) @NotNull String firstName,
+                   @Size(min = 1, max = 20) @NotNull String nameByFather, @Size(min = 1, max = 20) @NotNull String lastName,
+                   @Email String email, @NotNull @Max(12) int grade, @Pattern(regexp = "(^$|[0-9]{10})") String phone,
+                   String studyingInterest,
+                   Address address, Set<Parent> parents, Set<Teacher> teachers, Set<Group> groups) {
         this.personId = personId;
         this.firstName = firstName;
         this.nameByFather = nameByFather;
         this.lastName = lastName;
         this.email = email;
         this.grade = grade;
+        this.phone = phone;
         this.studyingInterest = studyingInterest;
         this.address = address;
         this.parents = parents;
         this.teachers = teachers;
+        this.groups = groups;
     }
 
     @Id
@@ -155,4 +162,23 @@ public class Student implements Serializable {
     }
 
 
+    @Column(name = "phone")
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "student_interestgroups", joinColumns = {
+            @JoinColumn(name = "student_id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "group_id",
+                    nullable = false, updatable = false) })
+    public Set<Group> getGroups() {
+        return groups;
+    }
+    public void setGroups(Set<Group> groups) {
+        this.groups = groups;
+    }
 }
