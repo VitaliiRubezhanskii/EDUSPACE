@@ -36,6 +36,21 @@ public class Parent implements Serializable {
 
     private Set<Student> students;
 
+    private Account account;
+
+    public Parent() {
+    }
+
+    public Parent(int personId, @Size(min = 1, max = 20) @NotNull String firstName, @Size(min = 1, max = 20) @NotNull String nameByFather,
+                  @Size(min = 1, max = 20) @NotNull String lastName, @Email String email, Set<Student> students,Account account) {
+        this.personId = personId;
+        this.firstName = firstName;
+        this.nameByFather = nameByFather;
+        this.lastName = lastName;
+        this.email = email;
+        this.students = students;
+        this.account=account;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "parent_id")
@@ -87,20 +102,14 @@ public class Parent implements Serializable {
         this.students = students;
     }
 
-    public Parent() {
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "parent", cascade = CascadeType.ALL)
+    public Account getAccount() {
+        return account;
+    }
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
-
-
-    public Parent(int personId, @Size(min = 1, max = 20) @NotNull String firstName, @Size(min = 1, max = 20) @NotNull String nameByFather,
-                  @Size(min = 1, max = 20) @NotNull String lastName, @Email String email, Set<Student> students) {
-        this.personId = personId;
-        this.firstName = firstName;
-        this.nameByFather = nameByFather;
-        this.lastName = lastName;
-        this.email = email;
-        this.students = students;
-    }
 
     @Override
     public boolean equals(Object o) {

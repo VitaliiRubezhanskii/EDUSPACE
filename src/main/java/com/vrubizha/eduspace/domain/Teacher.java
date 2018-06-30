@@ -38,13 +38,14 @@ public class Teacher implements Serializable {
     private String professionalInterest;
     private Set<Student>students;
     private Set<Subject> subjects;
+    private Account account;
 
     public Teacher() {
     }
 
     public Teacher(int personId, @Size(min = 1, max = 20) @NotNull String firstName, @Size(min = 1, max = 20) @NotNull String nameByFather,
                    @Size(min = 1, max = 20) @NotNull String lastName, @Email String email, Date startOfCareer, String professionalInterest,
-                   Set<Student> students, Set<Subject> subjects) {
+                   Set<Student> students, Set<Subject> subjects,Account account) {
         this.personId = personId;
         this.firstName = firstName;
         this.nameByFather = nameByFather;
@@ -54,6 +55,7 @@ public class Teacher implements Serializable {
         this.professionalInterest = professionalInterest;
         this.students = students;
         this.subjects = subjects;
+        this.account=account;
     }
 
     @Id
@@ -133,6 +135,14 @@ public class Teacher implements Serializable {
     }
     public void setSubjects(Set<Subject> subjects) {
         this.subjects = subjects;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "teacher", cascade = CascadeType.ALL)
+    public Account getAccount() {
+        return account;
+    }
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }
 

@@ -39,12 +39,12 @@ public class Student implements Serializable {
 
     @Pattern(regexp="(^$|[0-9]{10})")
     private String phone;
-
     private String studyingInterest;
     private Address address;
     private Set<Parent> parents;
     private Set<Teacher>teachers;
     private Set<Group> groups;
+    private Account account;
 
     public Student() {
     }
@@ -52,8 +52,8 @@ public class Student implements Serializable {
     public Student(int personId, @Size(min = 1, max = 20) @NotNull String firstName,
                    @Size(min = 1, max = 20) @NotNull String nameByFather, @Size(min = 1, max = 20) @NotNull String lastName,
                    @Email String email, @NotNull @Max(12) int grade, @Pattern(regexp = "(^$|[0-9]{10})") String phone,
-                   String studyingInterest,
-                   Address address, Set<Parent> parents, Set<Teacher> teachers, Set<Group> groups) {
+                   String studyingInterest,Address address, Set<Parent> parents,
+                   Set<Teacher> teachers, Set<Group> groups,Account account) {
         this.personId = personId;
         this.firstName = firstName;
         this.nameByFather = nameByFather;
@@ -66,6 +66,7 @@ public class Student implements Serializable {
         this.parents = parents;
         this.teachers = teachers;
         this.groups = groups;
+        this.account=account;
     }
 
     @Id
@@ -180,5 +181,13 @@ public class Student implements Serializable {
     }
     public void setGroups(Set<Group> groups) {
         this.groups = groups;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "student", cascade = CascadeType.ALL)
+    public Account getAccount() {
+        return account;
+    }
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }
