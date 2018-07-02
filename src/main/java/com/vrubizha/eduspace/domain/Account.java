@@ -3,24 +3,26 @@ package com.vrubizha.eduspace.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.Set;
 
 @Entity
 @Table(name = "account")
-public class Account {
+public class Account implements Serializable {
 
     private int id;
     private int accountUID;
     private String priceOption;
-    private Date registered;
+    private String registered;
     private String status;
     private int DaysOfDuration;
     private BigInteger balance;
     private Student student;
     private Parent parent;
     private Teacher teacher;
+
 
     private Set<FriendRequest> requests;
 
@@ -29,15 +31,15 @@ public class Account {
     }
 
     public Account(int id, int accountUID, String priceOption,
-                   Date registered, String status, int daysOfDuration,
+                   String status, int daysOfDuration,
                    BigInteger balance,Student student,Parent parent,Teacher teacher,
                    Set<FriendRequest> requests) {
         this.id = id;
         this.accountUID = accountUID;
         this.priceOption = priceOption;
-        this.registered = registered;
+        this.registered = new Date().toString();
         this.status = status;
-        DaysOfDuration = daysOfDuration;
+        this.DaysOfDuration = daysOfDuration;
         this.balance = balance;
         this.student=student;
         this.parent=parent;
@@ -72,10 +74,10 @@ public class Account {
     }
 
     @Column(name = "registered")
-    public Date getRegistered() {
+    public String getRegistered() {
         return registered;
     }
-    public void setRegistered(Date registered) {
+    public void setRegistered(String registered) {
         this.registered = registered;
     }
 

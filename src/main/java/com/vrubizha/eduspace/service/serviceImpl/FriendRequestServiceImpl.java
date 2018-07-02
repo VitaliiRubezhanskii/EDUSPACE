@@ -20,8 +20,8 @@ public class FriendRequestServiceImpl implements FriendRequestService {
 
 
     @Override
-    public FriendRequest findByOpponentAccount(int opponentId) {
-        return friendRequestRepository.findByOpponentAccount(opponentId);
+    public FriendRequest findByAccount(int opponentId) {
+        return friendRequestRepository.findByAccount(opponentId);
     }
 
     @Override

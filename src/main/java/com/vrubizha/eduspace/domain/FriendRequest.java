@@ -1,8 +1,12 @@
 package com.vrubizha.eduspace.domain;
 
+import com.vrubizha.eduspace.domain.converters.AccountConverter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -10,18 +14,19 @@ import java.util.Set;
 public class FriendRequest implements Serializable {
 
     private int requestId;
-    private int opponentAccount;
-    private Time timeOfRequest;
+
+    private Account account;
+    private Date timeOfRequest;
     private String status;
     private Set<Account> accounts;
 
     public FriendRequest() {
     }
 
-    public FriendRequest(int requestId, int opponentAccount,
-                         Time timeOfRequest, String status,Set<Account> accounts) {
+    public FriendRequest(int requestId, Account account,
+                         Timestamp timeOfRequest, String status,Set<Account> accounts) {
         this.requestId = requestId;
-        this.opponentAccount = opponentAccount;
+        this.account= account;
         this.timeOfRequest = timeOfRequest;
         this.status = status;
         this.accounts=accounts;
@@ -37,19 +42,21 @@ public class FriendRequest implements Serializable {
         this.requestId = requestId;
     }
 
-    @Column(name = "opponent_account")
-    public int getOpponentAccount() {
-        return opponentAccount;
+    @Column
+    @Convert(converter = AccountConverter.class)
+    public Account getAccount() {
+        return account;
     }
-    public void setOpponentAccount(int opponentAccount) {
-        this.opponentAccount = opponentAccount;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     @Column(name = "time_of_request")
-    public Time getTimeOfRequest() {
+    @Temporal(TemporalType.TIMESTAMP)
+    public Date getTimeOfRequest() {
         return timeOfRequest;
     }
-    public void setTimeOfRequest(Time timeOfRequest) {
+    public void setTimeOfRequest(Date timeOfRequest) {
         this.timeOfRequest = timeOfRequest;
     }
 

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface FriendRequestRepository extends JpaRepository<FriendRequest,Integer> {
 
 
-    FriendRequest findByOpponentAccount(int opponentId);
+    FriendRequest findByAccount(int opponentId);
 
 
 }

@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.io.File;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
@@ -190,4 +191,6 @@ public class Student implements Serializable {
     public void setAccount(Account account) {
         this.account = account;
     }
+
+
 }

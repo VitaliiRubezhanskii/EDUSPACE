@@ -4,7 +4,7 @@ import com.vrubizha.eduspace.domain.FriendRequest;
 
 public interface FriendRequestService {
 
-    FriendRequest findByOpponentAccount(int opponentId);
+    FriendRequest findByAccount(int opponentId);
     FriendRequest createFriendRequest(FriendRequest friendRequest);
 
 }

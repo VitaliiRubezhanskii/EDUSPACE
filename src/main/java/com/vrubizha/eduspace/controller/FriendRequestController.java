@@ -33,13 +33,14 @@ public class FriendRequestController {
         this.amqpTemplate = amqpTemplate;
     }
 
-    @GetMapping("/emit")
+    @GetMapping("/friendRequest")
     public ResponseEntity<FriendRequest> createFriendRequest(){
-        Account account=new Account(1,234321,"PRO",new Date(),"status",
+        Account account=new Account(1,2,"PRO","status",
                 12,new BigInteger("570"),new Student(),new Parent(),new Teacher(),null);
         FriendRequest friendRequest=new FriendRequest(
-                1,1,null,"PRO",null
+                1,account,null,"PRO",null
         );
+
         friendRequestService.createFriendRequest(friendRequest);
         amqpTemplate.convertAndSend("queue1",friendRequest);
         return new ResponseEntity<>(friendRequest,HttpStatus.CREATED);
