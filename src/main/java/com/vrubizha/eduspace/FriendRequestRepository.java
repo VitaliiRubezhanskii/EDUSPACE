@@ -1,4 +1,4 @@
-package com.vrubizha.eduspace.repository;
+package com.vrubizha.eduspace;
 
 import com.vrubizha.eduspace.domain.FriendRequest;
 import org.springframework.data.jpa.repository.JpaRepository;

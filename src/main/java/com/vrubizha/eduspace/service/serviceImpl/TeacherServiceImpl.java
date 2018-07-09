@@ -2,7 +2,7 @@ package com.vrubizha.eduspace.service.serviceImpl;
 
 import com.vrubizha.eduspace.domain.Teacher;
 import com.vrubizha.eduspace.exception.TeacherNotFoundException;
-import com.vrubizha.eduspace.repository.TeacherRepository;
+import com.vrubizha.eduspace.TeacherRepository;
 import com.vrubizha.eduspace.service.TeacherService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;

@@ -2,12 +2,11 @@ package com.vrubizha.eduspace.service.serviceImpl;
 
 import com.vrubizha.eduspace.domain.Student;
 import com.vrubizha.eduspace.exception.StudentNotFoundException;
-import com.vrubizha.eduspace.repository.StudentRepository;
+import com.vrubizha.eduspace.StudentRepository;
 import com.vrubizha.eduspace.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 

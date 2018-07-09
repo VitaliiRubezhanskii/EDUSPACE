@@ -1,11 +1,9 @@
 package com.vrubizha.eduspace.service.serviceImpl;
 
 import com.vrubizha.eduspace.domain.Account;
-import com.vrubizha.eduspace.repository.AccountRepository;
+import com.vrubizha.eduspace.AccountRepository;
 import com.vrubizha.eduspace.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Optional;
 
 public class AccountServiceImpl implements AccountService {
 

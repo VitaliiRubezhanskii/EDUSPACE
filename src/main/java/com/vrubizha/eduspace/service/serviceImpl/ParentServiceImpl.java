@@ -1,7 +1,7 @@
 package com.vrubizha.eduspace.service.serviceImpl;
 
 import com.vrubizha.eduspace.domain.Parent;
-import com.vrubizha.eduspace.repository.ParentRepository;
+import com.vrubizha.eduspace.ParentRepository;
 import com.vrubizha.eduspace.service.ParentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

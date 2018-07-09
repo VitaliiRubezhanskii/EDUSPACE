@@ -31,16 +31,16 @@ public class SubjectController {
         return new ResponseEntity<>(subjectService.findAllSubjects(),HttpStatus.OK);
     }
 
-    @GetMapping("/subjects/{name}")
-    public ResponseEntity< Subject > findSubjectByName(@PathVariable("name") String name){
-        logger.info("retrieving subject by name = "+name);
-        return new ResponseEntity<>(subjectService.findSubjectByName(name),HttpStatus.OK);
-    }
+//    @GetMapping("/subjects/{name}")
+//    public ResponseEntity< Subject > findSubjectByName(@PathVariable("name") String name){
+//        logger.info("retrieving subject by name = "+name);
+//        return new ResponseEntity<>(subjectService.findSubjectByName(name),HttpStatus.OK);
+//    }
 
     @GetMapping("/subjects/{id}")
-    public ResponseEntity< Subject > findSubjectById(@PathVariable("id") int id){
+    public Subject findSubjectById(@PathVariable("id") int id){
         logger.info("retrieving subject by id = "+id);
-        return new ResponseEntity<>(subjectService.findSubjectById(id),HttpStatus.OK);
+        return subjectService.findSubjectById(id);
     }
 
     @PostMapping("/subjects")
