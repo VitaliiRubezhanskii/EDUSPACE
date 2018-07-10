@@ -47,7 +47,7 @@ public class SubjectController {
     public ResponseEntity< Subject > createSubject(@RequestBody Subject subject){
         Subject createdSubject=subjectService.createSubject(subject);
         logger.info("created new subject with id = "+createdSubject.getSubjectId());
-        return new ResponseEntity<>(createdSubject,HttpStatus.OK);
+        return new ResponseEntity<>(createdSubject,HttpStatus.CREATED);
     }
 
     @DeleteMapping("/subjects")
