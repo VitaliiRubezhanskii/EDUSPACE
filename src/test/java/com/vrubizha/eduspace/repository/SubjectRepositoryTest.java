@@ -68,7 +68,7 @@ public class SubjectRepositoryTest {
      *  test saving new subject to database
      */
     @Test
-    public void should_save_new_subject() {
+    public void testSaveNewSubject() {
         Subject savedSubject = subjectRepository.save(subject1);
 
         assertThat(savedSubject).isNotNull();
@@ -80,7 +80,7 @@ public class SubjectRepositoryTest {
      * test method find subject by its name
      */
     @Test
-    public void should_find_subject_by_name(){
+    public void testFindSubjectByName(){
       Subject persistedSubject=testEntityManager.persist(subject1);
       Subject foundSubject=subjectRepository.findSubjectBySubjectName("TestSubject");
 
@@ -93,7 +93,7 @@ public class SubjectRepositoryTest {
      */
 
     @Test(expected = NullPointerException.class)
-    public void should_throw_NullPointerException(){
+    public void testThrowNullPointerException(){
 
         Subject persistedSubject=testEntityManager.persist(subject1);
         Subject foundSubject=subjectRepository.findSubjectBySubjectName(null);
@@ -107,7 +107,7 @@ public class SubjectRepositoryTest {
      */
 
     @Test
-    public void should_find_all_persisted_subjects(){
+    public void testAllPersistedProject(){
       Subject persistedSubject1=  testEntityManager.persist(subject1);
         Subject persistedSubject2= testEntityManager.persist(subject2);
 
@@ -123,7 +123,7 @@ public class SubjectRepositoryTest {
      */
 
     @Test
-    public void delete_subject_should_return_deleted_subject(){
+    public void testDeleteProject(){
         Subject persistedSubject1=  testEntityManager.persist(subject1);
         Subject persistedSubject2= testEntityManager.persist(subject2);
 

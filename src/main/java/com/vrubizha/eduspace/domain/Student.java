@@ -129,7 +129,7 @@ public class Student implements Serializable {
     }
 
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade ={CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REFRESH,CascadeType.REMOVE})
     @JoinTable(name = "student_parent", joinColumns = {
             @JoinColumn(name = "student_id", nullable = false, updatable = false) },
             inverseJoinColumns = { @JoinColumn(name = "parent_id",
@@ -141,7 +141,7 @@ public class Student implements Serializable {
         this.parents = parents;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade ={ CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REFRESH,CascadeType.REMOVE})
     @JoinTable(name = "student_teacher", joinColumns = {
             @JoinColumn(name = "student_id", nullable = false, updatable = false) },
             inverseJoinColumns = { @JoinColumn(name = "teacher_id",
