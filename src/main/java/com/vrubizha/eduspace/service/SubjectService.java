@@ -8,7 +8,7 @@ import java.util.List;
 public interface SubjectService {
 
     Subject createSubject(Subject subject);
-    Subject deleteSubject(Subject subject);
+    void deleteSubject(int subjectId);
     Subject findSubjectById(int id);
     List<Subject> findAllSubjects();
     Subject findSubjectByName(String nameOfSubject);

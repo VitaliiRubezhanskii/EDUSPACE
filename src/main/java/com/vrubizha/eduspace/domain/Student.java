@@ -38,7 +38,7 @@ public class Student implements Serializable {
     @Max(12)
     private int grade;
 
-    @Pattern(regexp="(^$|[0-9]{10})")
+  //  @Pattern(regexp="(^$|[0-9]{10})")
     private String phone;
     private String studyingInterest;
     private Address address;
@@ -50,11 +50,22 @@ public class Student implements Serializable {
     public Student() {
     }
 
+    public Student(@Size(min = 1, max = 20) @NotNull String firstName, @Size(min = 1, max = 20) @NotNull String nameByFather, @Size(min = 1, max = 20) @NotNull String lastName, @Email String email,
+                   @NotNull @Max(12) int grade, @Pattern(regexp = "(^$|[0-9]{10})") String phone, String studyingInterest) {
+        this.firstName = firstName;
+        this.nameByFather = nameByFather;
+        this.lastName = lastName;
+        this.email = email;
+        this.grade = grade;
+        this.phone = phone;
+        this.studyingInterest = studyingInterest;
+    }
+
     public Student(int personId, @Size(min = 1, max = 20) @NotNull String firstName,
                    @Size(min = 1, max = 20) @NotNull String nameByFather, @Size(min = 1, max = 20) @NotNull String lastName,
                    @Email String email, @NotNull @Max(12) int grade, @Pattern(regexp = "(^$|[0-9]{10})") String phone,
-                   String studyingInterest,Address address, Set<Parent> parents,
-                   Set<Teacher> teachers, Set<Group> groups,Account account) {
+                   String studyingInterest, Address address, Set<Parent> parents,
+                   Set<Teacher> teachers, Set<Group> groups, Account account) {
         this.personId = personId;
         this.firstName = firstName;
         this.nameByFather = nameByFather;
@@ -69,6 +80,8 @@ public class Student implements Serializable {
         this.groups = groups;
         this.account=account;
     }
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -26,9 +26,9 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public Subject deleteSubject(Subject subject) {
-        subjectRepository.delete(subject);
-        return subject;
+    public void deleteSubject(int subjectId) {
+        subjectRepository.deleteById(subjectId);
+
     }
 
     @Override

@@ -31,13 +31,13 @@ public class SubjectController {
         return new ResponseEntity<>(subjectService.findAllSubjects(),HttpStatus.OK);
     }
 
-//    @GetMapping("/subjects/{name}")
-//    public ResponseEntity< Subject > findSubjectByName(@PathVariable("name") String name){
-//        logger.info("retrieving subject by name = "+name);
-//        return new ResponseEntity<>(subjectService.findSubjectByName(name),HttpStatus.OK);
-//    }
+    @GetMapping("/subjects/name/{name}")
+    public ResponseEntity< Subject > findSubjectByName(@PathVariable("name") String name){
+        logger.info("retrieving subject by name = "+name);
+        return new ResponseEntity<>(subjectService.findSubjectByName(name),HttpStatus.OK);
+    }
 
-    @GetMapping("/subjects/{id}")
+    @GetMapping("/subjects/id/{id}")
     public Subject findSubjectById(@PathVariable("id") int id){
         logger.info("retrieving subject by id = "+id);
         return subjectService.findSubjectById(id);
@@ -50,10 +50,11 @@ public class SubjectController {
         return new ResponseEntity<>(createdSubject,HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/subjects")
-    public ResponseEntity< Subject > deleteSubject(@RequestBody Subject subject){
-        Subject deletedSubject=subjectService.deleteSubject(subject);
-        logger.info("deleting subject with id = "+deletedSubject.getSubjectId());
-        return new ResponseEntity<>(deletedSubject,HttpStatus.OK);
+    @DeleteMapping("/subjects/{subjectId}")
+    public ResponseEntity< Subject > deleteSubject(@PathVariable("subjectId") int subjectId){
+
+        subjectService.deleteSubject(subjectId);
+        logger.info("deleting subject with id = "+subjectId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
