@@ -1,8 +1,11 @@
 package com.vrubizha.eduspace.configuration.general;
 
 
+import com.vrubizha.eduspace.service.StudentService;
+import com.vrubizha.eduspace.service.serviceImpl.StudentServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
@@ -56,6 +59,12 @@ public class SwaggerConfiguration extends WebMvcConfigurationSupport {
     public BCryptPasswordEncoder passwordEncoder() {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         return bCryptPasswordEncoder;
+    }
+
+    @Bean(name = "studentServiceImpl")
+//    @Primary
+    public StudentService studentService(){
+        return new StudentServiceImpl();
     }
 
 

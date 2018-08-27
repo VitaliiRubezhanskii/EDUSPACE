@@ -2,6 +2,7 @@ package com.vrubizha.eduspace.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -13,6 +14,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "teacher")
+@ToString
 public class Teacher implements Serializable {
 
 
