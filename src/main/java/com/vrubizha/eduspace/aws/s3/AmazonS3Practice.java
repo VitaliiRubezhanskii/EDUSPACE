@@ -18,8 +18,8 @@ public class AmazonS3Practice {
 
 //    @Value("{amazon.aws.access-key-id}") private String accessKey;
 //    @Value("{amazon.aws.access-key-secret}") private String secretKey;
- private final String accessKey="AKIAIBRAW4CWJ73S3YWA";
- private final String secretKey="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";
+ private final String accessKey="";
+ private final String secretKey="";
  private final Region region=Region.EU_CENTRAL_1;
 
 
@@ -118,8 +118,8 @@ public class AmazonS3Practice {
 //        amazonS3Practice.uploadObject("vitalikbucketbyjdk","newfile","/home/user/Downloads/frontend1.pdf");
 //        amazonS3Practice.downloadObject("vitalikbucketbyjdk","newfile","/home/user/Documents/Books");
 //        amazonS3Practice.copyObject("vitalikbucketbyjdk","newfile","eduspace","copiedfile");
-        amazonS3Practice.moveObject("vitalikbucketbyjdk","newfile","eduspace","copiedfile");
-//        amazonS3Practice.deleteBucket("vitalikbucketbyjdk");
+//        amazonS3Practice.moveObject("vitalikbucketbyjdk","newfile","eduspace","copiedfile");
+        amazonS3Practice.deleteBucket("vitalikbucketbyjdk");
 
 //        System.out.println("buckets: "+amazonS3Practice.listBucketNames());
     }

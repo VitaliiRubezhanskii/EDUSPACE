@@ -9,11 +9,11 @@ import java.util.List;
 public class AmazonRdsMySqlPractice {
 
 
-    private static final String DNS_name="eduspace2.czf6yai59ku1.eu-central-1.rds.amazonaws.com";
-    private static final String port="3306";
-    private static final String dbName="eduspace";
-    private static final String username="vitalii";
-    private static final String password="QAZ10sinus";
+    private static final String DNS_name="";
+    private static final String port="";
+    private static final String dbName="";
+    private static final String username="";
+    private static final String password="";
 
 
 public static Connection connectToAwsRdsMysql(){
